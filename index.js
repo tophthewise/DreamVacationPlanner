@@ -1,7 +1,16 @@
+require("dotenv").config()
 const express = require("express")
 const app = express()
+const mongoose = require("mongoose")
+
+mongoose.connect(process.env.dbURL).then(() => {
+  console.log("DB Connected!!");
+}).catch((error) => {
+  console.log("Error connecting to MongoDB:", error);
+});
 
 const userRoutes = require("./server/routes/user")
+const vacationRoutes = require("./server/routes/vacation")
 
 //CORS middleware
 app.use(function(req, res, next) {
