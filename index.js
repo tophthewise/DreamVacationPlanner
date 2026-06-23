@@ -21,7 +21,8 @@ app.use(function(req, res, next) {
 });
 
 app.use('/users', userRoutes)
-
+app.use('/vacations', vacationRoutes)
+app.use('/excursions', excursionRoutes)
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`))
 
