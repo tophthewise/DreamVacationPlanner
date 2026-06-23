@@ -7,8 +7,8 @@ const router = express.Router();
 router
   .post('/addVacation', async (req, res) => {
     try {
-      const vacation = await Vacation.addVacation(req.body.destination, req.body.start_date, req.body.end_date, req.body.total_budget, req.body.transportation);
-      res.send({...vacation, password: undefined});
+      const vacation = await Vacation.addVacation(req.body.destination, req.body.start_date, req.body.end_date, req.body.total_budget, req.body.transportation, req.body.user);
+      res.send({...vacation});
     } catch(error) {
       res.status(401).send({ message: error.message });
     }

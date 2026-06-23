@@ -16,7 +16,7 @@ const Vacation = mongoose.model("Vacation", vacationSchema)
 
 // 4. create CRUD functions on model
 //CREATE a user
-async function addVacation(destination, start_date, end_date, total_budget, transportation) {
+async function addVacation(destination, start_date, end_date, total_budget, transportation, user) {
   const vacation = await getVacation(destination, user);
   if(vacation) throw Error('this vacation is already noted!')
 
@@ -28,7 +28,7 @@ async function addVacation(destination, start_date, end_date, total_budget, tran
     transportation: transportation
   });
 
-  return newUser._doc
+  return newVacation._doc
 }
 
 // READ a user
