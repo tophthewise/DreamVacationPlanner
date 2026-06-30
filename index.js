@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
-
+app.use(express.json())
 mongoose.connect(process.env.dbURL).then(() => {
   console.log("DB Connected!!");
 }).catch((error) => {
@@ -11,7 +11,7 @@ mongoose.connect(process.env.dbURL).then(() => {
 
 const userRoutes = require("./server/routes/user")
 const vacationRoutes = require("./server/routes/vacation")
-
+const excursionRoutes = require("./server/routes/excursion")
 //CORS middleware
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");  
@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
 app.use('/users', userRoutes)
 app.use('/vacations', vacationRoutes)
 app.use('/excursions', excursionRoutes)
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`))
 
 /*

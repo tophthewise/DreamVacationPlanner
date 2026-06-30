@@ -6,6 +6,19 @@
   height: 40vmin;
   pointer-events: none;
 }
+#background{
+  background-color: #01669f;
+  color:#995ec2;
+}
+navbar{
+  background-color: #01669f;
+}
+a{
+  color:#e27cc7;
+}
+a:hover{
+  color:#dd89ba;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <div>
+    <div idName="background">
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">Dream Vacation Planner</a>
