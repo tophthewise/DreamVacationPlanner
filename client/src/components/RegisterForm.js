@@ -1,7 +1,8 @@
 import { fetchData } from '../main.js';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
+  const navigate = useNavigate();
 const [user, setUser] = useState({username: '', password: '', password2: ''});
 const {username, password, password2} = user;
 const onChange = (e)=> setUser({...user, [e.target.name]: e.target.value});
@@ -17,6 +18,7 @@ const onSubmit = async (e) => {
       {
         if(!data.message){
            console.log(data)}
+           navigate('/Vacations')
           })
           .catch(
             (err) => {console.log(err)

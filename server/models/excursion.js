@@ -15,8 +15,8 @@ const excursionSchema = new mongoose.Schema({
   },
  
 });
-const excursion = mongoose.model("Excursion", excursionSchema);
-async function addExcursion(name, description, price) {
+const Excursion = mongoose.model("Excursion", excursionSchema);
+async function addExcursion(name, description, price, user) {
   const excursion = await getExcursion(name, user);
   if(excursion) throw Error('this excursion is already noted!')
 
