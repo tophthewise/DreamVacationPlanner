@@ -1,6 +1,29 @@
-const Register = () => {
+import { fetchData } from '../main.js';
+import { useState } from 'react';
 
-  return(
+const Register = () => {
+const [user, setUser] = useState({username: '', password: '', password2: ''});
+const {username, password, password2} = user;
+const onChange = (e)=> setUser({...user, [e.target.name]: e.target.value});
+const onSubmit = async (e) => {
+  e.preventDefault();
+  if(password !== password2){
+    alert('Passwords do not match');
+    return;
+  }
+ 
+    const data = await fetchData('users/register', {username, password}, 'POST')
+    .then((data) => 
+      {
+        if(!data.message){
+           console.log(data)}
+          })
+          .catch(
+            (err) => {console.log(err)
+
+        });
+      }
+  return( 
     <div>
       <form >
         <div className="mb-3">
@@ -11,6 +34,8 @@ const Register = () => {
             id="username"
             name='username'
             required
+            value={username}
+            onChange={onChange}
           />
         </div>
         <div className="mb-3">
@@ -21,6 +46,8 @@ const Register = () => {
             id="password"
             name='password'
             required
+            value={password}
+            onChange={onChange}
           />
         </div>
         <div className="mb-3">
@@ -31,12 +58,15 @@ const Register = () => {
             id="password2"
             name='password2'
             required
+            value={password2}
+            onChange={onChange}
+            required
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register"/>
+        <input type="submit" onSubmit={onSubmit} className="btn btn-primary" value="Register"/>
       </form>
     </div>
   );
+  
 }
-
 export default Register;
